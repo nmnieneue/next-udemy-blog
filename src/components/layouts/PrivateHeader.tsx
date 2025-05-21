@@ -5,10 +5,14 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import SearchBox from "../post/SearchBox";
+import Setting from "./Setting";
+import { auth } from "@/auth";
 
-export default function PublicHeader() {
+export default async function PrivateHeader() {
+  const session = await auth();
+  if (!session?.user?.email) {
+    throw new Error("不正なリクエストです");
+  }
 
   return (
     <header className="border-b bg-blue-200">
@@ -17,22 +21,14 @@ export default function PublicHeader() {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/" className="font-bold text-xl">
-                  Blog
+                <Link href="/dashboard" className="font-bold text-xl">
+                  管理ページ
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="flex items-center gap-4">
-          <SearchBox />
-          <Button variant="outline" asChild>
-            <Link href="/login">ログイン</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/register">登録</Link>
-          </Button>
-        </div>
+        <Setting session={session} />
       </div>
     </header>
   );
