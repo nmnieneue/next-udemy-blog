@@ -17,7 +17,7 @@ export default function Setting({ session }: { session: Session }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="font-medium">
+        <Button variant="ghost" className="font-medium hover:bg-white focus:bg-white cursor-pointer">
           {session.user?.name}
         </Button>
       </DropdownMenuTrigger>

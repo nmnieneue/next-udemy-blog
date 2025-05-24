@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
+import { FiSearch } from "react-icons/fi";
 
 export default function SearchBox() {
   const [search, setSearch] = useState("");
@@ -25,11 +26,14 @@ export default function SearchBox() {
   }, [debouncedSearch, router]);
 
   return (
-    <Input
-      placeholder="記事を検索..."
-      className="w-[200px] lg:w-[300px] bg-white"
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-    />
+    <div className="relative">
+      <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      <Input
+        placeholder="記事を検索..."
+        className="w-[250px] lg:w-[300px] bg-white pl-10"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+    </div>
   );
 }
