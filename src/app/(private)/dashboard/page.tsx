@@ -2,6 +2,8 @@ import { auth } from "@/auth";
 import PostDropdownMenu from "@/components/post/PostDropdownMenu";
 import { Button } from "@/components/ui/button";
 import { getOwnPosts } from "@/lib/ownPost";
+import { format } from "date-fns";
+import { ja } from "date-fns/locale";
 import Link from "next/link";
 
 export default async function DashboardPage() {
@@ -38,7 +40,7 @@ export default async function DashboardPage() {
                 {post.published ? "表示" : "非表示"}
               </td>
               <td className="border p-2 text-center">
-                {new Date(post.updatedAt).toLocaleString()}
+                {format(new Date(post.updatedAt), "yyyy年MM月dd日 HH:mm", {locale: ja})}
               </td>
               <td className="border p-2 text-center">
                 <PostDropdownMenu postId={post.id} />
