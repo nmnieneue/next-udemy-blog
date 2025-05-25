@@ -8,7 +8,7 @@ import { ja } from "date-fns/locale";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github.css"; // コードハイライト用のスタイル
+import "highlight.js/styles/github-dark.css"; // コードハイライト用のスタイル
 
 type Params = {
   params: Promise<{ id: string }>;
