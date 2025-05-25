@@ -9,7 +9,7 @@ import { auth } from "@/auth";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github.css"; // コードハイライト用のスタイル
+import "highlight.js/styles/github-dark.css";
 
 type Params = {
   params: Promise<{ id: string }>;
@@ -55,7 +55,7 @@ export default async function ShowPage({ params }: Params) {
               })}
             </time>
           </div>
-          <CardTitle className="text-3xl font-bold pb-6">
+          <CardTitle className="text-3xl font-bold pb-6 rounded">
             {post.title}
           </CardTitle>
         </CardHeader>
