@@ -9,12 +9,17 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css"; // コードハイライト用のスタイル
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { auth } from "@/auth";
 
 type Params = {
   params: Promise<{ id: string }>;
 };
 
 export default async function PostPage({ params }: Params) {
+  const session = await auth();
+  const userId = session?.user?.id;
   const { id } = await params;
   const post = await getPost(id);
   if (!post) {
@@ -47,6 +52,18 @@ export default async function PostPage({ params }: Params) {
               })}
             </time>
           </div>
+          {userId === post.authorId && (
+            <div className="flex pb-1">
+              <Button asChild variant="outline">
+                <Link
+                  href={`/manage/posts/${post.id}/edit`}
+                  className="cursor-pointer ml-auto"
+                >
+                  編集
+                </Link>
+              </Button>
+            </div>
+          )}
           <CardTitle className="text-3xl font-bold pb-6">
             {post.title}
           </CardTitle>
