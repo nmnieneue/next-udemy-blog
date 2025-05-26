@@ -10,6 +10,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Params = {
   params: Promise<{ id: string }>;
@@ -54,6 +56,16 @@ export default async function ShowPage({ params }: Params) {
                 locale: ja,
               })}
             </time>
+          </div>
+          <div className="flex pb-1">
+            <Button asChild variant="outline">
+              <Link
+                href={`/manage/posts/${post.id}/edit`}
+                className="cursor-pointer ml-auto"
+              >
+                編集
+              </Link>
+            </Button>
           </div>
           <CardTitle className="text-3xl font-bold pb-6 rounded">
             {post.title}
