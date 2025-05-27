@@ -14,6 +14,7 @@ Markdown形式で記述する簡易ブログサイトとなっています。
 - Udemy講座：「【Next.js】フルスタック開発基本講座(TypeScript/Prisma/Auth)【脱初心者/わかりやすさ重視】」  
   GitHubリポジトリ：https://github.com/aokitashipro/next-udemy-blog  
 ※デザインや機能の一部をアレンジ・拡張しています。
+※ライセンスの明記がないため、コードの取り扱いにはご注意ください。
 
 ## ✨ 主な機能
 - Markdown形式に対応した簡易ブログ
