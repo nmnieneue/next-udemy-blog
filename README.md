@@ -1,36 +1,56 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## My Portfolio (Next.js)
+Next.js/TypeScriptで制作した個人ポートフォリオサイトです。  
+認証、DB、バリデーション、CRUD機能などが実装された、  
+Markdown形式で記述する簡易ブログサイトとなっています。
 
-First, run the development server:
+## 🔗 デモサイト
+[https://your-portfolio-url.vercel.app](https://next-udemy-blog-delta.vercel.app/)
 
+## 📚 参考教材
+このアプリは以下のUdemy教材を元に制作しました。一部オリジナル機能を追加しています。
+
+- Udemy講座：「【Next.js】フルスタック開発基本講座(TypeScript/Prisma/Auth)【脱初心者/わかりやすさ重視】」  
+  GitHubリポジトリ：https://github.com/aokitashipro/next-udemy-blog  
+※デザインや機能の一部をアレンジ・拡張しています。
+
+## ✨ 主な機能
+- Markdown形式に対応した簡易ブログ
+- 記事の投稿、編集、削除、検索
+- ユーザー登録、ログイン機能
+- レスポンシブデザイン対応
+
+## 📝 自身で追加した機能
+- 
+
+## 🛠️ 使用技術
+- フレームワーク: Next.js v15(App Router) / TypeScript
+- スタイリング: Tailwind CSS / shadcn/ui
+- 認証: Auth.js
+- DB: Prisma / supabase
+- バリデーション: zod
+- デプロイ: Vercel
+- その他: react-markdown / ts-node / bcryptjs / react Icon など
+
+## 🚀 ローカルでの起動方法
+
+1. このリポジトリをクローン
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/nmnieneue/next-udemy-blog.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.	ディレクトリに移動
+```bash
+cd your-repo
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3.	パッケージをインストール
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.	開発サーバーを起動
+```bash
+npm run dev
+```
