@@ -22,7 +22,7 @@ export default function PostCard({ post }: PostCardProps) {
           </div>
         )}
         <CardHeader>
-          <CardTitle className="line-clamp-1 py-4 text-lg">
+          <CardTitle className="line-clamp-2 py-4 text-lg">
             {post.title}
           </CardTitle>
         </CardHeader>

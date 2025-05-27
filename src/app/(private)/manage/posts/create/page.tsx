@@ -1,5 +1,5 @@
 "use client";
-import { useState, useActionState } from "react";
+import { useState, useActionState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -9,11 +9,15 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { createPost } from "@/lib/actions/createPost";
+import ImageForm from "@/components/post/ImageForm";
 
 export default function CreatePage() {
   const [content, setContent] = useState("");
   const [contentLength, setContentLength] = useState(0);
+  const [title, setTitle] = useState("");
   const [preview, setPreview] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [state, formAction] = useActionState(createPost, {
     success: false,
@@ -25,6 +29,32 @@ export default function CreatePage() {
     setContent(value);
     setContentLength(value.length);
   };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setImagePreview(previewUrl);
+    }
+  };
+
+  const handleImageDelete = () => {
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview);
+      setImagePreview("");
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
 
   return (
     <div className="container mx-auto mt-10">
@@ -39,20 +69,20 @@ export default function CreatePage() {
             id="title"
             name="title"
             placeholder="タイトルを入力してください"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           {state.errors.title && (
             <p className="text-red-500 text-sm mt-1">{state.errors.title}</p>
           )}
         </div>
-        <div>
-          <Label htmlFor="topImage" className="mb-2">
-            トップ画像
-          </Label>
-          <Input type="file" id="topImage" accept="image/*" name="topImage" />
-          {state.errors.topImage && (
-            <p className="text-red-500 text-sm mt-1">{state.errors.topImage}</p>
-          )}
-        </div>
+        <ImageForm
+          imagePreview={imagePreview}
+          error={state.errors.topImage}
+          fileInputRef={fileInputRef as React.RefObject<HTMLInputElement>}
+          onImageChange={handleImageChange}
+          onImageDelete={handleImageDelete}
+        />
         <div>
           <Label htmlFor="content" className="mb-2">
             内容(Markdown)

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useActionState, useEffect } from "react";
+import { useState, useActionState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -8,9 +8,10 @@ import "highlight.js/styles/github-dark.css";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { updatePost } from "@/lib/actions/updatePost";
+import ImageForm from "@/components/post/ImageForm";
+import { deleteImage } from "@/lib/actions/deleteImage";
 
 type EditPostFormProps = {
   post: {
@@ -29,6 +30,8 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [title, setTitle] = useState(post.title);
   const [published, setPublished] = useState(post.published);
   const [imagePreview, setImagePreview] = useState(post.topImage);
+  const [oldImageUrl, setOldImageUrl] = useState(post.topImage || "");
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [state, formAction] = useActionState(updatePost, {
     success: false,
@@ -47,6 +50,18 @@ export default function EditPostForm({ post }: EditPostFormProps) {
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
     }
+  };
+
+  const handleImageDelete = async () => {
+    if (imagePreview) {
+      URL.revokeObjectURL(imagePreview);
+      setImagePreview("");
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+    await deleteImage(post.id);
+    setOldImageUrl("");
   };
 
   useEffect(() => {
@@ -77,34 +92,13 @@ export default function EditPostForm({ post }: EditPostFormProps) {
             <p className="text-red-500 text-sm mt-1">{state.errors.title}</p>
           )}
         </div>
-        <div>
-          <Label htmlFor="topImage" className="mb-2">
-            トップ画像
-          </Label>
-          <Input
-            type="file"
-            id="topImage"
-            accept="image/*"
-            name="topImage"
-            onChange={handleImageChange}
-          />
-          {imagePreview && (
-            <div className="mt-2">
-              <Image
-                src={imagePreview}
-                alt={post.title}
-                width={0}
-                height={0}
-                sizes="200px"
-                className="w-[200px]"
-                priority
-              />
-            </div>
-          )}
-          {state.errors.topImage && (
-            <p className="text-red-500 text-sm mt-1">{state.errors.topImage}</p>
-          )}
-        </div>
+        <ImageForm
+          imagePreview={imagePreview as string | null}
+          error={state.errors.topImage}
+          fileInputRef={fileInputRef as React.RefObject<HTMLInputElement>}
+          onImageChange={handleImageChange}
+          onImageDelete={handleImageDelete}
+        />
         <div>
           <Label htmlFor="content" className="mb-2">
             内容(Markdown)
@@ -164,7 +158,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           </Button>
         </div>
         <input type="hidden" name="postId" value={post.id} />
-        <input type="hidden" name="oldImageUrl" value={post.topImage || ""} />
+        <input type="hidden" name="oldImageUrl" value={oldImageUrl} />
       </form>
     </div>
   );

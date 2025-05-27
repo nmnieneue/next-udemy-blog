@@ -18,7 +18,7 @@ Markdown形式で記述する簡易ブログサイトとなっています。
 
 ## ✨ 主な機能
 - Markdown形式に対応した簡易ブログ
-- 記事の投稿、編集、削除、検索
+- 記事の投稿、検索、編集、削除
 - ユーザー登録、ログイン機能
 - レスポンシブデザイン対応
 
@@ -43,7 +43,7 @@ git clone https://github.com/nmnieneue/next-udemy-blog.git
 
 2.	ディレクトリに移動
 ```bash
-cd your-repo
+cd next-udemy-blog
 ```
 
 3.	パッケージをインストール
