@@ -38,7 +38,7 @@ Markdown形式で記述する簡易ブログサイトとなっています。
 
 1. このリポジトリをクローン
 ```bash
-git clone https://github.com/nmnieneue/next-udemy-blog.git
+git clone https://github.com/yum4-k/next-udemy-blog.git
 ```
 
 2.	ディレクトリに移動
