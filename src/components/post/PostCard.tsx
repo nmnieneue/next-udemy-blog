@@ -9,7 +9,7 @@ export default function PostCard({ post }: PostCardProps) {
   return (
     <Card className="hover:shadow-lg transition-shadow pt-0 gap-0">
       <Link href={`/posts/${post.id}`}>
-        {post.topImage && (
+        {post.topImage ? (
           <div className="relative w-full h-48">
             <Image
               src={post.topImage}
@@ -20,6 +20,8 @@ export default function PostCard({ post }: PostCardProps) {
               priority
             />
           </div>
+        ) : (
+          <div className="relative w-full h-48 bg-white rounded-t-xl" />
         )}
         <CardHeader>
           <CardTitle className="line-clamp-2 py-4 text-lg">

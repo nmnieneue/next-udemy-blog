@@ -29,7 +29,7 @@ export default async function PostPage({ params }: Params) {
   return (
     <div className="container mx-auto px-4 py-8">
       <Card className="max-w-3xl mx-auto pt-0 gap-0">
-        {post.topImage && (
+        {post.topImage ? (
           <div className="relative w-full h-64 lg:h-96">
             <Image
               src={post.topImage}
@@ -40,6 +40,8 @@ export default async function PostPage({ params }: Params) {
               priority
             />
           </div>
+        ) : (
+          <div className="relative w-full h-64 lg:h-96 bg-white rounded-xl" />
         )}
         <CardHeader>
           <div className="flex justify-between items-center mb-4">
