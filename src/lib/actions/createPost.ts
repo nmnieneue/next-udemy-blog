@@ -18,7 +18,10 @@ export async function createPost(
   const title = formData.get("title") as string;
   const content = formData.get("content") as string;
   const topImageInput = formData.get("topImage");
-  const topImage = topImageInput instanceof File ? topImageInput : null;
+  const topImage =
+    topImageInput instanceof File && topImageInput.size > 0
+      ? topImageInput
+      : null;
 
   const validationResult = postSchema.safeParse({ title, content, topImage });
   if (!validationResult.success) {
@@ -28,11 +31,17 @@ export async function createPost(
     };
   }
 
-  const imageUrl = topImage ? await saveImage(topImage) : null;
+  const imageUrl =
+    topImage instanceof File &&
+    topImage.size > 0 &&
+    topImage.name !== "undefined"
+      ? await saveImage(topImage)
+      : null;
+      
   if (topImage && !imageUrl) {
     return {
       success: false,
-      errors: { image: ["画像の保存に失敗しました"] },
+      errors: { topImage: ["画像の保存に失敗しました"] },
     };
   }
 

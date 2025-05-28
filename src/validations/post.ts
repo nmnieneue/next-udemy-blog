@@ -7,5 +7,5 @@ export const postSchema = z.object({
   content: z
     .string()
     .min(10, { message: "内容は10文字以上で入力してください" }),
-  topImage: z.instanceof(File).nullable().optional(),
+  topImage: z.any().nullable().optional(),
 });
