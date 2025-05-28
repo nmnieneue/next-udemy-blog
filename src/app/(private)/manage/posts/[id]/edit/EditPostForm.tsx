@@ -117,7 +117,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           )}
         </div>
         <div className="text-right text-sm text-gray-500 mt-1">
-          文字数; {contentLength}
+          文字数: {contentLength}
         </div>
         <Button type="button" onClick={() => setPreview(!preview)}>
           {preview ? "プレビューを閉じる" : "プレビューを開く"}
