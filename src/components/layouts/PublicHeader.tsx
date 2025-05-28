@@ -31,8 +31,10 @@ export default function PublicHeader({ session }: { session: Session | null }) {
                       <Image
                         src="/image.jpeg"
                         alt="logo"
-                        width={100}
+                        width={0}
                         height={0}
+                        sizes="100px"
+                        className="w-[100px]"
                       />
                     </Link>
                   </NavigationMenuLink>

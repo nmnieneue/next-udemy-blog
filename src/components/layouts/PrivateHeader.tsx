@@ -27,8 +27,10 @@ export default async function PrivateHeader() {
                     <Image
                       src="/image.jpeg"
                       alt="logo"
-                      width={100}
+                      width={0}
                       height={0}
+                      sizes="100px"
+                      className="w-[100px]"
                     />
                   </Link>
                 </NavigationMenuLink>
