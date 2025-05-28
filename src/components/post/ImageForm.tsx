@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface ImageUploaderProps {
   imagePreview: string | null;
@@ -46,10 +47,10 @@ export default function ImageUploader({
           />
           <Button
             type="button"
-            className="absolute top-2 right-2 w-8 h-8 bg-black bg-opacity-50 text-white rounded-full flex items-center justify-center hover:bg-opacity-75"
+            className="absolute top-2 right-2 w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-opacity-75"
             onClick={onImageDelete}
           >
-            ×
+            <AiOutlineClose size={16} />
           </Button>
         </div>
       )}
