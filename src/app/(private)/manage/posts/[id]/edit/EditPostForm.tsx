@@ -154,7 +154,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
           >
-            投稿する
+            更新する
           </Button>
         </div>
         <input type="hidden" name="postId" value={post.id} />
