@@ -8,10 +8,10 @@ import "highlight.js/styles/github-dark.css";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { updatePost } from "@/lib/actions/updatePost";
 import ImageForm from "@/components/post/ImageForm";
 import { deleteImage } from "@/lib/actions/deleteImage";
+import PostVisibilityRadioGroup from "@/components/post/PostVisibilityRadioGroup";
 
 type EditPostFormProps = {
   post: {
@@ -134,21 +134,10 @@ export default function EditPostForm({ post }: EditPostFormProps) {
             </ReactMarkdown>
           </div>
         )}
-        <RadioGroup
-          value={published.toString()}
-          name="published"
-          onValueChange={(value) => setPublished(value === "true")}
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="true" id="published-one" />
-            <Label htmlFor="published-one">表示</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="false" id="published-two" />
-            <Label htmlFor="published-two">非表示</Label>
-          </div>
-        </RadioGroup>
-
+        <PostVisibilityRadioGroup
+          published={published}
+          setPublished={setPublished}
+        />
         <div>
           <Button
             type="submit"

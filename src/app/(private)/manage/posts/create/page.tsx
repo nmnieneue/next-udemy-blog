@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { createPost } from "@/lib/actions/createPost";
 import ImageForm from "@/components/post/ImageForm";
+import PostVisibilityRadioGroup from "@/components/post/PostVisibilityRadioGroup";
 
 export default function CreatePage() {
   const [content, setContent] = useState("");
@@ -17,6 +18,7 @@ export default function CreatePage() {
   const [title, setTitle] = useState("");
   const [preview, setPreview] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
+  const [published, setPublished] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [state, formAction] = useActionState(createPost, {
@@ -118,6 +120,10 @@ export default function CreatePage() {
             </ReactMarkdown>
           </div>
         )}
+        <PostVisibilityRadioGroup
+          published={published}
+          setPublished={setPublished}
+        />
         <div>
           <Button
             type="submit"

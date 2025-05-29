@@ -17,6 +17,7 @@ export async function createPost(
 ): Promise<ActionState> {
   const title = formData.get("title") as string;
   const content = formData.get("content") as string;
+  const published = formData.get("published") === "true";
   const topImageInput = formData.get("topImage");
   const topImage =
     topImageInput instanceof File && topImageInput.size > 0
@@ -37,7 +38,7 @@ export async function createPost(
     topImage.name !== "undefined"
       ? await saveImage(topImage)
       : null;
-      
+
   if (topImage && !imageUrl) {
     return {
       success: false,
@@ -55,7 +56,7 @@ export async function createPost(
       title,
       content,
       topImage: imageUrl,
-      published: true,
+      published,
       authorId: userId,
     },
   });
