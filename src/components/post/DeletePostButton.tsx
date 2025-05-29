@@ -23,7 +23,7 @@ export default function DeletePostButton({ postId }: { postId: string }) {
   return (
     <>
       <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger className="px-2 py-1 border rounded-md">
+        <DropdownMenuTrigger className="px-2.5 py-1.5 border rounded-md">
           ⋯
         </DropdownMenuTrigger>
         <DropdownMenuContent align="center" side="right">
