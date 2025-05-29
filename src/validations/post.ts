@@ -7,5 +7,17 @@ export const postSchema = z.object({
   content: z
     .string()
     .min(10, { message: "内容は10文字以上で入力してください" }),
-  topImage: z.any().nullable().optional(),
+  topImage: z
+    .custom(
+      (file) => {
+        if (!file) return true;
+        if (file.size > 10 * 1024 * 1024) {
+          return false;
+        }
+        return true;
+      },
+      { message: "画像ファイルは10MB以下である必要があります" }
+    )
+    .nullable()
+    .optional(),
 });

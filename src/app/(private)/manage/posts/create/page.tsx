@@ -19,6 +19,7 @@ export default function CreatePage() {
   const [preview, setPreview] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
   const [published, setPublished] = useState(true);
+  const [imageError, setImageError] = useState<string[] | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [state, formAction] = useActionState(createPost, {
@@ -35,6 +36,14 @@ export default function CreatePage() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        setImageError(["画像ファイルは10MB以下である必要があります"]);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+        return;
+      }
+      setImageError(null);
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
     }
@@ -80,7 +89,7 @@ export default function CreatePage() {
         </div>
         <ImageForm
           imagePreview={imagePreview}
-          error={state.errors.topImage}
+          error={imageError || state.errors.topImage}
           fileInputRef={fileInputRef as React.RefObject<HTMLInputElement>}
           onImageChange={handleImageChange}
           onImageDelete={handleImageDelete}
