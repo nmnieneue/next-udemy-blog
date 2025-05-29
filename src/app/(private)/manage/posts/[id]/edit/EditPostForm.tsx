@@ -12,6 +12,7 @@ import { updatePost } from "@/lib/actions/updatePost";
 import ImageForm from "@/components/post/ImageForm";
 import { deleteImage } from "@/lib/actions/deleteImage";
 import PostVisibilityRadioGroup from "@/components/post/PostVisibilityRadioGroup";
+import DeletePostButton from "@/components/post/DeletePostButton";
 
 type EditPostFormProps = {
   post: {
@@ -138,13 +139,14 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           published={published}
           setPublished={setPublished}
         />
-        <div>
+        <div className="flex items-center gap-4">
           <Button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
           >
             更新する
           </Button>
+          <DeletePostButton postId={post.id} />
         </div>
         <input type="hidden" name="postId" value={post.id} />
         <input type="hidden" name="oldImageUrl" value={oldImageUrl} />
