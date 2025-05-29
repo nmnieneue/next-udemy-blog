@@ -51,7 +51,7 @@ export default function PublicHeader({ session }: { session: Session | null }) {
             </>
           ) : (
             <>
-              <Setting session={session} />
+              <Setting session={session} headerType="public"/>
               <Button asChild>
                 <Link href="/manage/posts/create">
                   <MdEdit className="inline-block" />

@@ -46,7 +46,7 @@ export default async function PrivateHeader() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Setting session={session} />
+        <Setting session={session} headerType="private" />
       </div>
     </header>
   );
