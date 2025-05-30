@@ -8,7 +8,7 @@ import { ja } from "date-fns/locale";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github-dark.css"; // コードハイライト用のスタイル
+import "highlight.js/styles/github-dark.css";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { auth } from "@/auth";
@@ -75,8 +75,8 @@ export default async function PostPage({ params }: Params) {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}
-              skipHtml={false} // HTMLスキップを無効化
-              unwrapDisallowed={true} // Markdownの改行を解釈
+              skipHtml={false}
+              unwrapDisallowed={true}
             >
               {post.content}
             </ReactMarkdown>

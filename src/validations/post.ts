@@ -11,12 +11,12 @@ export const postSchema = z.object({
     .custom(
       (file) => {
         if (!file) return true;
-        if (file.size > 10 * 1024 * 1024) {
+        if (file.size > 5 * 1024 * 1024) {
           return false;
         }
         return true;
       },
-      { message: "画像ファイルは10MB以下である必要があります" }
+      { message: "画像ファイルは5MB以下である必要があります" }
     )
     .nullable()
     .optional(),

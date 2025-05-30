@@ -12,12 +12,9 @@ type ActionState = {
   errors: Record<string, string[]>;
 };
 
-// バリデーションエラー処理
 function handleValidationError(error: ZodError): ActionState {
   const { fieldErrors, formErrors } = error.flatten();
   const castedFieldErrors = fieldErrors as Record<string, string[]>;
-  // zodの仕様でパスワード一致確認のエラーは formErrorsで渡ってくる
-  // formErrorsがある場合は、confirmPasswordフィールドにエラーを追加
   if (formErrors.length > 0) {
     return {
       success: false,
@@ -26,7 +23,6 @@ function handleValidationError(error: ZodError): ActionState {
   }
   return { success: false, errors: castedFieldErrors };
 }
-// カスタムエラー処理
 function handleError(customErrors: Record<string, string[]>): ActionState {
   return { success: false, errors: customErrors };
 }

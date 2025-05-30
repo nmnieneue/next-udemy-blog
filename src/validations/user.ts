@@ -19,5 +19,5 @@ export const registerSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "パスワードが一致しません",
-    path: ["confirmPassword"], // エラーを表示するフィールドを指定
+    path: ["confirmPassword"],
   });

@@ -122,8 +122,8 @@ export default function CreatePage() {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}
-              skipHtml={false} // HTMLスキップを無効化
-              unwrapDisallowed={true} // Markdownの改行を解釈
+              skipHtml={false}
+              unwrapDisallowed={true}
             >
               {content}
             </ReactMarkdown>
