@@ -49,8 +49,8 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 10 * 1024 * 1024) {
-        setImageError(["画像ファイルは10MB以下である必要があります"]);
+      if (file.size > 5 * 1024 * 1024) {
+        setImageError(["画像ファイルは5MB以下である必要があります"]);
         if (fileInputRef.current) {
           fileInputRef.current.value = "";
         }
