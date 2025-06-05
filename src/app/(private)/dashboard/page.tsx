@@ -1,10 +1,11 @@
-import { auth } from "@/auth";
-import PostDropdownMenu from "@/components/post/PostDropdownMenu";
 import { Button } from "@/components/ui/button";
-import { getOwnPosts } from "@/lib/ownPost";
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
 import Link from "next/link";
+
+import { auth } from "@/auth";
+import { getOwnPosts } from "@/lib/ownPost";
+import PostDropdownMenu from "@/components/post/PostDropdownMenu";
 
 export default async function DashboardPage() {
   const session = await auth();

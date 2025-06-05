@@ -1,4 +1,3 @@
-import { signOut } from "@/auth";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,9 +6,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Session } from "next-auth";
 import { Button } from "../ui/button";
+import { Session } from "next-auth";
 import Link from "next/link";
+
+import { signOut } from "@/auth";
 
 export default function Setting({
   session,

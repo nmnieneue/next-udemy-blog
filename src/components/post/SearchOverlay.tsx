@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import SearchBox from "../post/SearchBox";
 import { FiSearch } from "react-icons/fi";
+
+import SearchBox from "../post/SearchBox";
 
 export default function SearchOverlay() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);

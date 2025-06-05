@@ -1,9 +1,10 @@
-import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
-import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { prisma } from "./lib/prisma";
+import { authConfig } from "./auth.config";
 import bcryptjs from "bcryptjs";
+import NextAuth from "next-auth";
+
+import Credentials from "next-auth/providers/credentials";
 
 async function getUser(email: string) {
   return await prisma.user.findUnique({

@@ -1,12 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+
 import DeletePostDialog from "./DeletePostDialog";
 
 export default function DeletePostButton({ postId }: { postId: string }) {

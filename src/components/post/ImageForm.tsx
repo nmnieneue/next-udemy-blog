@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AiOutlineClose } from "react-icons/ai";
+import Image from "next/image";
 
 interface ImageUploaderProps {
   imagePreview: string | null;

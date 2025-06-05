@@ -1,18 +1,20 @@
 "use client";
+
 import { useState, useActionState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import TextareaAutosize from "react-textarea-autosize";
 import "highlight.js/styles/github-dark.css";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+
 import { updatePost } from "@/lib/actions/updatePost";
-import ImageForm from "@/components/post/ImageForm";
 import { deleteImage } from "@/lib/actions/deleteImage";
-import PostVisibilityRadioGroup from "@/components/post/PostVisibilityRadioGroup";
+import ImageForm from "@/components/post/ImageForm";
 import DeletePostButton from "@/components/post/DeletePostButton";
+import PostVisibilityRadioGroup from "@/components/post/PostVisibilityRadioGroup";
 
 type EditPostFormProps = {
   post: {

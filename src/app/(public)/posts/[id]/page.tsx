@@ -1,16 +1,16 @@
-import { getPost } from "@/lib/post";
-import { notFound } from "next/navigation";
-import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
+import Image from "next/image";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+
+import { getPost } from "@/lib/post";
 import { auth } from "@/auth";
 
 type Params = {

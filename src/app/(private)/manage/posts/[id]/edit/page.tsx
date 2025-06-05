@@ -1,6 +1,7 @@
+import { notFound } from "next/navigation";
+
 import { auth } from "@/auth";
 import { getOwnPost } from "@/lib/ownPost";
-import { notFound } from "next/navigation";
 import EditPostForm from "./EditPostForm";
 
 type Params = {

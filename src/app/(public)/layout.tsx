@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
+
 import { auth } from "@/auth";
 import PublicHeader from "@/components/layouts/PublicHeader";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: ".Blog",

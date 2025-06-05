@@ -5,9 +5,10 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import Setting from "./Setting";
-import { auth } from "@/auth";
 import Image from "next/image";
+
+import { auth } from "@/auth";
+import Setting from "./Setting";
 
 export default async function PrivateHeader() {
   const session = await auth();

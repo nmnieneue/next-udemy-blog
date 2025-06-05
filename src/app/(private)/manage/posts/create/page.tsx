@@ -1,13 +1,15 @@
 "use client";
+
 import { useState, useActionState, useRef, useEffect } from "react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import TextareaAutosize from "react-textarea-autosize";
 import "highlight.js/styles/github-dark.css";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+
 import { createPost } from "@/lib/actions/createPost";
 import ImageForm from "@/components/post/ImageForm";
 import PostVisibilityRadioGroup from "@/components/post/PostVisibilityRadioGroup";

@@ -4,13 +4,14 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
 import { Button } from "../ui/button";
 import { MdEdit } from "react-icons/md";
-import Image from "next/image";
 import { Session } from "next-auth";
-import SearchOverlay from "../post/SearchOverlay";
+import Link from "next/link";
+import Image from "next/image";
+
 import Setting from "./Setting";
+import SearchOverlay from "../post/SearchOverlay";
 
 export default function PublicHeader({ session }: { session: Session | null }) {
   return (

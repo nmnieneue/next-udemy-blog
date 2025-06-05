@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
+import { Input } from "../ui/input";
 
 export default function SearchBox() {
   const [search, setSearch] = useState("");

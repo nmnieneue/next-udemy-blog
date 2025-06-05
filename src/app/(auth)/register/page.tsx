@@ -1,7 +1,7 @@
-import RegisterForm from "@/components/auth/RegisterForm";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+
+import RegisterForm from "@/components/auth/RegisterForm";
 
 export default function RagisterPage() {
   return (
